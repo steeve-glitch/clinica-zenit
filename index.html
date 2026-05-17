@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta name="description" content="Clínica Zenit ofrece servicios de odontología en Concepción. Reserva tu hora para higiene dental, ortodoncia y estética dental.">
+
+   <meta name="robots" content="index, follow">
+
+   <meta name="language" content="es">
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Clínica Zenit</title>
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+</head>
+
+
+
+
+
+
+
+<body>
+
+  <!-- Header -->
+
+  <header>
+
+    <div class="container nav-container">
+
+  <img src="assets/images/logo.png" alt="Logo Clínica Zenit" class="logo" />
+
+  <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
+
+  <nav>
+
+    <ul class="nav-links">
+
+      <li><a href="index.html">Inicio</a></li>
+
+      <li><a href="#nosotros">Nosotros</a></li>
+
+      <li><a href="#servicios">Servicios</a></li>
+
+      <li><a href="#contacto">Contacto</a></li>
+
+      <li><a href="appointment.html">Reservar Hora</a></li>
+
+    </ul>
+
+  </nav>
+
+</div>
+
+
+
+  </header>
+
+
+
+  <!-- Hero Section -->
+
+<section class="hero">
+
+  <div class="overlay">
+
+    <div class="hero-content">
+
+      <h1><span class="zenit-orange_white_border">Tu sonrisa, nuestra prioridad</span></h1>
+
+      <p><span class="zenit-orange">Atención dental de excelencia en Concepción</span></p>
+
+      <a href="appointment.html" class="btn">Reservar Hora</a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+
+  <!-- About -->
+
+  <section id="nosotros" class="about">
+
+    <div class="container">
+
+      <img src="assets/images/profile1.png" alt="dentista" />
+
+      <h2>¿Quiénes somos?</h2>
+
+      <p>En Clínica Zenit nos especializamos en ofrecer tratamientos dentales de alta calidad, con un enfoque humano y tecnología moderna. Nuestro objetivo es brindarte una atención segura, cómoda y confiable.</p>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- Services -->
+
+  <section id="servicios" class="services">
+
+    <div class="container">
+
+      <h2>Servicios</h2>
+
+      <div class="service-grid">
+
+        <div class="service-card">
+
+          <img src="assets/images/icon-limpieza.png" alt="higiene profesional" />
+
+          <h3>higiene profesional</h3>
+
+          <p>Prevención y cuidado para una sonrisa saludable.</p>
+
+        </div>
+
+        <div class="service-card">
+
+          <img src="assets/images/icon-ortodoncia.png" alt="Ortodoncia" />
+
+          <h3>Ortodoncia</h3>
+
+          <p>Corrige la posición de tus dientes de forma efectiva.</p>
+
+        </div>
+
+        <div class="service-card">
+
+          <img src="assets/images/icon-estetica.png" alt="Estética Dental" />
+
+          <h3>Estética Dental</h3>
+
+          <p>Blanqueamiento y carillas para mejorar tu sonrisa.</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- Contact -->
+
+  <footer id="contacto" class="footer">
+
+    <div class="container footer-content">
+
+      <p><strong>Dirección:</strong> Chacabuco 295, Concepción, Chile</p>
+
+      <p><strong>Teléfono:</strong> +56 (41) 273 0534</p>
+
+      <p><strong>Correo:</strong> contacto@clinicazenit.cl</p>
+
+      <p><strong>Horario:</strong> Lunes: 10:00 – 18:00 | martes a viernes: 8:30 – 18:00 </p>
+
+      <p>© 2025 Clínica Zenit. Todos los derechos reservados.</p>
+
+    </div>
+
+  </footer>
+
+  <!-- WhatsApp Button --> 
+
+<a href="https://wa.me/56979924494" target="_blank" class="whatsapp-button" aria-label="Enviar mensaje por WhatsApp">
+
+  <img src="assets/images/whatsapp.png" alt="WhatsApp" />
+
+</a>
+
+
+
+  <script>
+
+  const sections = document.querySelectorAll("section, footer");
+
+  const navLinksScroll = document.querySelectorAll("nav a[href^='#']");
+
+
+
+  window.addEventListener("scroll", () => {
+
+    let current = "";
+
+
+
+    sections.forEach(section => {
+
+      const sectionTop = section.offsetTop - 120; // offset for sticky header
+
+      if (pageYOffset >= sectionTop) {
+
+        current = section.getAttribute("id");
+
+      }
+
+    });
+
+
+
+    navLinksScroll.forEach(link => {
+
+      link.classList.remove("active");
+
+      if (link.getAttribute("href") === `#${current}`) {
+
+        link.classList.add("active");
+
+      }
+
+    });
+
+  });
+
+</script>
+
+<script>
+
+  const toggleBtn = document.querySelector('.menu-toggle');
+
+  const navLinksMenu = document.querySelector('.nav-links');
+
+
+
+  toggleBtn.addEventListener('click', () => {
+
+    navLinksMenu.classList.toggle('show');
+
+  });
+
+</script>
+
+
+
+</body>
+
+</html>
+

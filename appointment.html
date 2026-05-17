@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reserva de Hora | Clínica Zenit</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<header>
+  <div class="container nav-container">
+    <img src="assets/images/logo.png" alt="Logo Clínica Zenit" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="#">Nosotros</a></li>
+        <li><a href="#">Servicios</a></li>
+        <li><a href="appointment.html">Reservar Hora</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="appointment-form">
+  <div class="container">
+    <h2>Reserva tu hora</h2>
+    <p>Completa el siguiente formulario y nos pondremos en contacto contigo para confirmar tu cita.</p>
+
+    <form action="send.php" method="post">
+      <label for="nombre">Nombre completo:</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required />
+
+      <label for="rut">RUT:</label>
+      <input type="text" id="rut" name="rut" placeholder="Ej: 12.345.678-9" required />
+
+      <label for="telefono">Teléfono:</label>
+      <input type="tel" id="telefono" name="telefono" placeholder="+56 9 1234 5678" required />
+
+      <label for="correo">Correo electrónico:</label>
+      <input type="email" id="correo" name="correo" placeholder="tucorreo@ejemplo.cl" required />
+
+      <label for="especialidad">Especialidad:</label>
+      <select id="especialidad" name="especialidad" required>
+        <option value="">-- Selecciona una especialidad --</option>
+        <option value="limpieza">Limpieza Dental</option>
+        <option value="ortodoncia">Ortodoncia</option>
+        <option value="estetica">Estética Dental</option>
+        <option value="control">Control General</option>
+      </select>
+
+      <label for="fecha">Fecha preferida:</label>
+      <input type="date" id="fecha" name="fecha" required />
+
+      <button type="submit" class="btn">Enviar Solicitud</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-content">
+      <p><strong>Dirección:</strong> Chacabuco 295, Concepción, Chile</p>
+      <p><strong>Teléfono:</strong> +56 (41) 273 0534</p>
+      <p><strong>Correo:</strong> contacto@clinicazenit.cl</p>
+      <p><strong>Horario:</strong> Lunes: 10:00 – 18:00 | martes a viernes: 8:30 – 18:00 </p>
+      <p>© 2025 Clínica Zenit. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+</body>
+</html>
