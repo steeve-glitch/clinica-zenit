@@ -27,7 +27,7 @@
     <h2>Reserva tu hora</h2>
     <p>Completa el siguiente formulario y nos pondremos en contacto contigo para confirmar tu cita.</p>
 
-    <form action="send.php" method="post">
+    <form id="appointmentForm">
       <label for="nombre">Nombre completo:</label>
       <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required />
 
@@ -38,22 +38,62 @@
       <input type="tel" id="telefono" name="telefono" placeholder="+56 9 1234 5678" required />
 
       <label for="correo">Correo electrónico:</label>
-      <input type="email" id="correo" name="correo" placeholder="tucorreo@ejemplo.cl" required />
+      <input type="email" id="correo" name="email" placeholder="tucorreo@ejemplo.cl" required />
 
       <label for="especialidad">Especialidad:</label>
       <select id="especialidad" name="especialidad" required>
         <option value="">-- Selecciona una especialidad --</option>
-        <option value="limpieza">Limpieza Dental</option>
-        <option value="ortodoncia">Ortodoncia</option>
-        <option value="estetica">Estética Dental</option>
-        <option value="control">Control General</option>
+        <option value="Limpieza Dental">Limpieza Dental</option>
+        <option value="Ortodoncia">Ortodoncia</option>
+        <option value="Estética Dental">Estética Dental</option>
+        <option value="Control General">Control General</option>
       </select>
 
       <label for="fecha">Fecha preferida:</label>
       <input type="date" id="fecha" name="fecha" required />
 
       <button type="submit" class="btn">Enviar Solicitud</button>
+      <p id="formMessage" style="display:none;margin-top:1rem;font-weight:600;"></p>
     </form>
+
+    <script>
+      document.getElementById('appointmentForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const btn = form.querySelector('button[type="submit"]');
+        const msg = document.getElementById('formMessage');
+        const data = Object.fromEntries(new FormData(form));
+
+        btn.disabled = true;
+        btn.textContent = 'Enviando...';
+        msg.style.display = 'none';
+
+        try {
+          const res = await fetch('/api/send', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+
+          if (res.ok) {
+            msg.textContent = '¡Solicitud enviada! Nos contactaremos contigo pronto para confirmar tu cita.';
+            msg.style.color = '#2e7d32';
+            form.reset();
+          } else {
+            const err = await res.json();
+            msg.textContent = err.error || 'Ocurrió un error. Por favor intenta nuevamente.';
+            msg.style.color = '#c62828';
+          }
+        } catch {
+          msg.textContent = 'No se pudo conectar. Verifica tu conexión e intenta nuevamente.';
+          msg.style.color = '#c62828';
+        }
+
+        msg.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Enviar Solicitud';
+      });
+    </script>
   </div>
 </section>
 
