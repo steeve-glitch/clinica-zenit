@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Reserva de Hora | Clínica Zenit</title>
+  <title>Reservar Hora | Clínica Zenit</title>
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
@@ -12,100 +12,136 @@
   <div class="container nav-container">
     <img src="assets/images/logo.png" alt="Logo Clínica Zenit" class="logo" />
     <nav>
-      <ul>
+      <ul class="nav-links">
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="#">Nosotros</a></li>
-        <li><a href="#">Servicios</a></li>
-        <li><a href="appointment.html">Reservar Hora</a></li>
+        <li><a href="index.html#nosotros">Nosotros</a></li>
+        <li><a href="index.html#servicios">Servicios</a></li>
+        <li><a href="appointment.html" class="btn-nav">Reservar Hora</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<section class="appointment-form">
+<section class="appointment-section">
   <div class="container">
-    <h2>Reserva tu hora</h2>
-    <p>Completa el siguiente formulario y nos pondremos en contacto contigo para confirmar tu cita.</p>
+    <div class="form-card reveal active">
+      <h2>Reserva tu hora</h2>
+      <p style="text-align: center; color: #666; margin-bottom: 30px;">Completa el siguiente formulario y nos pondremos en contacto contigo para confirmar tu cita.</p>
 
-    <form id="appointmentForm">
-      <label for="nombre">Nombre completo:</label>
-      <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required />
+      <form id="appointmentForm" class="appointment-form">
+        <div class="form-group">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required />
+        </div>
 
-      <label for="rut">RUT:</label>
-      <input type="text" id="rut" name="rut" placeholder="Ej: 12.345.678-9" required />
+        <div class="form-group">
+          <label for="rut">RUT</label>
+          <input type="text" id="rut" name="rut" placeholder="Ej: 12.345.678-9" required />
+        </div>
 
-      <label for="telefono">Teléfono:</label>
-      <input type="tel" id="telefono" name="telefono" placeholder="+56 9 1234 5678" required />
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="+56 9 1234 5678" required />
+        </div>
 
-      <label for="correo">Correo electrónico:</label>
-      <input type="email" id="correo" name="email" placeholder="tucorreo@ejemplo.cl" required />
+        <div class="form-group">
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" name="email" placeholder="tucorreo@ejemplo.cl" required />
+        </div>
 
-      <label for="especialidad">Especialidad:</label>
-      <select id="especialidad" name="especialidad" required>
-        <option value="">-- Selecciona una especialidad --</option>
-        <option value="Limpieza Dental">Limpieza Dental</option>
-        <option value="Ortodoncia">Ortodoncia</option>
-        <option value="Estética Dental">Estética Dental</option>
-        <option value="Control General">Control General</option>
-      </select>
+        <div class="form-group">
+          <label for="especialidad">Especialidad</label>
+          <select id="especialidad" name="especialidad" required>
+            <option value="">-- Selecciona una especialidad --</option>
+            <option value="Limpieza Dental">Limpieza Dental</option>
+            <option value="Ortodoncia">Ortodoncia</option>
+            <option value="Estética Dental">Estética Dental</option>
+            <option value="Control General">Control General</option>
+          </select>
+        </div>
 
-      <label for="fecha">Fecha preferida:</label>
-      <input type="date" id="fecha" name="fecha" required />
+        <div class="form-group">
+          <label for="fecha">Fecha preferida</label>
+          <input type="date" id="fecha" name="fecha" required />
+        </div>
 
-      <button type="submit" class="btn">Enviar Solicitud</button>
-      <p id="formMessage" style="display:none;margin-top:1rem;font-weight:600;"></p>
-    </form>
-
-    <script>
-      document.getElementById('appointmentForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const form = e.target;
-        const btn = form.querySelector('button[type="submit"]');
-        const msg = document.getElementById('formMessage');
-        const data = Object.fromEntries(new FormData(form));
-
-        btn.disabled = true;
-        btn.textContent = 'Enviando...';
-        msg.style.display = 'none';
-
-        try {
-          const res = await fetch('/api/send', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
-          });
-
-          if (res.ok) {
-            msg.textContent = '¡Solicitud enviada! Nos contactaremos contigo pronto para confirmar tu cita.';
-            msg.style.color = '#2e7d32';
-            form.reset();
-          } else {
-            const err = await res.json();
-            msg.textContent = err.error || 'Ocurrió un error. Por favor intenta nuevamente.';
-            msg.style.color = '#c62828';
-          }
-        } catch {
-          msg.textContent = 'No se pudo conectar. Verifica tu conexión e intenta nuevamente.';
-          msg.style.color = '#c62828';
-        }
-
-        msg.style.display = 'block';
-        btn.disabled = false;
-        btn.textContent = 'Enviar Solicitud';
-      });
-    </script>
+        <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Enviar Solicitud</button>
+        <p id="formMessage" style="display:none;margin-top:1.5rem;text-align:center;font-weight:600;"></p>
+      </form>
+    </div>
   </div>
 </section>
 
-<footer>
-  <div class="container footer-content">
-      <p><strong>Dirección:</strong> Chacabuco 295, Concepción, Chile</p>
-      <p><strong>Teléfono:</strong> +56 (41) 273 0534</p>
-      <p><strong>Correo:</strong> contacto@clinicazenit.cl</p>
-      <p><strong>Horario:</strong> Lunes: 10:00 – 18:00 | martes a viernes: 8:30 – 18:00 </p>
-      <p>© 2025 Clínica Zenit. Todos los derechos reservados.</p>
+<footer class="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <img src="assets/images/logo.png" alt="Logo Zenit" style="height: 40px; margin-bottom: 20px; filter: brightness(0) invert(1);" />
+        <p>Comprometidos con la excelencia odontológica y el bienestar de cada uno de nuestros pacientes en Concepción.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h4>Enlaces</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="index.html#nosotros">Nosotros</a></li>
+          <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="appointment.html">Reservar Hora</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Horario</h4>
+        <p><strong>Lunes:</strong> 10:00 – 18:00</p>
+        <p><strong>Mar a Vie:</strong> 08:30 – 18:00</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <p>📍 Chacabuco 295, Concepción</p>
+        <p>📞 +56 (41) 273 0534</p>
+        <p>✉️ contacto@clinicazenit.cl</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Clínica Zenit. Todos los derechos reservados.</p>
     </div>
 </footer>
+
+<script>
+  document.getElementById('appointmentForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('button[type="submit"]');
+    const msg = document.getElementById('formMessage');
+    const data = Object.fromEntries(new FormData(form));
+
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    msg.style.display = 'none';
+
+    try {
+      const res = await fetch('/api/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        msg.textContent = '¡Solicitud enviada! Nos contactaremos contigo pronto para confirmar tu cita.';
+        msg.style.color = '#2e7d32';
+        form.reset();
+      } else {
+        const err = await res.json();
+        msg.textContent = err.error || 'Ocurrió un error. Por favor intenta nuevamente.';
+        msg.style.color = '#c62828';
+      }
+    } catch {
+      msg.textContent = 'No se pudo conectar. Verifica tu conexión e intenta nuevamente.';
+      msg.style.color = '#c62828';
+    }
+
+    msg.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Enviar Solicitud';
+  });
+</script>
 
 </body>
 </html>

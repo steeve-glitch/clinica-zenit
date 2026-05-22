@@ -6,11 +6,17 @@
 }
 
 /* Typography and Base */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@400;600&display=swap');
+
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Inter', sans-serif;
   line-height: 1.6;
   color: #333;
-  background-color: #f9f9f9;
+  background-color: #fcfcfc;
+}
+
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
 }
 
 html {
@@ -26,12 +32,15 @@ html {
 
 /* Header */
 header {
-  background-color: #737373; /* dark gray from logo */
-  padding: 20px 0;
+  background-color: rgba(115, 115, 115, 0.85); /* Glassmorphism */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 15px 0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-container {
@@ -47,18 +56,23 @@ header {
 nav ul {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 30px;
 }
 
 nav a {
-  color:#f3ebeb;
-
+  color: #f3ebeb;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
 }
+
+nav a:hover {
+  color: #F7941E;
+}
+
 nav a.active {
   color: #F7941E;
-  text-decoration: underline;
 }
 
 /* Hero Section */
@@ -71,7 +85,7 @@ nav a.active {
 }
 
 .overlay {
-  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
   width: 100%;
   height: 100%;
   display: flex;
@@ -83,384 +97,320 @@ nav a.active {
 
 .hero-content {
   color: white;
-  max-width: 700px;
+  max-width: 800px;
 }
 
 .hero h1 {
-  font-size: 3em;
-  margin-bottom: 10px;
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  line-height: 1.2;
 }
 
 .hero p {
-  font-size: 1.2em;
-  margin-bottom: 20px;
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+  font-weight: 400;
+  color: #eee;
 }
 
-
 .btn {
-  background-color: #F7941E; /* main orange */
+  background-color: #F7941E;
   color: white;
-  padding: 12px 24px;
+  padding: 15px 35px;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 50px; /* Pill shape */
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(247, 148, 30, 0.3);
 }
 
 .btn:hover {
-  background-color: #F26522; /* slightly darker orange */
+  background-color: #F26522;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(247, 148, 30, 0.4);
 }
 
-/* About */
+/* About Section (Two-Column) */
 .about {
-  padding: 60px 20px;
+  padding: 100px 0;
   background-color: #fff;
 }
 
-.about h2 {
-  font-size: 2em;
-  margin-bottom: 20px;
-  color: #737373;
-}
-
 .about .container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
   align-items: center;
-  text-align: center;
 }
 
-.about img {
-  max-width: 180px;
+.about-content {
+  text-align: left;
+}
+
+.about h2 {
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+  color: #444;
+  position: relative;
+}
+
+.about h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #F7941E;
+  margin-top: 10px;
+}
+
+.about p {
+  font-size: 1.1rem;
+  color: #666;
   margin-bottom: 20px;
 }
 
+.about-image img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
 
 /* Services */
 .services {
-  background-color: #f4f4f4;
-  padding: 60px 20px;
+  background-color: #f8f9fa;
+  padding: 100px 0;
 }
 
 .services h2 {
   text-align: center;
-  font-size: 2em;
-  margin-bottom: 40px;
-  color: #737373;
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  color: #444;
 }
 
 .service-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
-  justify-content: space-between;
 }
 
 .service-card {
-  flex: 1 1 calc(33.333% - 20px);
   background-color: white;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 40px 30px;
+  border-radius: 20px;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+  border: 1px solid #f0f0f0;
 }
 
 .service-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border-color: #F7941E;
 }
 
 .service-card img {
-  height: 60px;
-  width: 60px;
-  object-fit: contain;
-  margin-bottom: 5px;
- 
+  height: 80px;
+  width: 80px;
+  margin: 0 auto 20px;
+  transition: transform 0.3s ease;
 }
 
+.service-card:hover img {
+  transform: scale(1.1);
+}
 
 .service-card h3 {
-  color: #F7941E;
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
 }
 
-/* Footer */
-footer {
-  background-color: #737373;
-  color: white;
-  padding: 40px 20px;
+.service-card p {
+  color: #777;
+}
+
+/* Appointment Form Card */
+.appointment-section {
+  padding: 100px 0;
+  background: #fff;
+}
+
+.form-card {
+  max-width: 700px;
+  margin: 0 auto;
+  background: white;
+  padding: 50px;
+  border-radius: 25px;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.05);
+  border: 1px solid #f0f0f0;
+}
+
+.form-card h2 {
   text-align: center;
-  font-size: 0.9em;
-}
-
-footer strong {
-  color: #F7941E;
-}
-/* Appointment Form */
-.appointment-form {
-  padding: 60px 20px;
-  background-color: #fff;
-}
-
-.appointment-form h2 {
-  color: #737373;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  color: #333;
 }
 
 .appointment-form form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-top: 20px;
+  gap: 20px;
 }
 
-.appointment-form label {
-  font-weight: bold;
-  color: #333;
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #555;
 }
 
 .appointment-form input,
 .appointment-form select {
-  padding: 10px;
-  font-size: 1em;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 12px 18px;
+  font-size: 1rem;
+  border: 2px solid #eee;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
 }
 
-.appointment-form button {
-  align-self: start;
-  padding: 12px 24px;
-  background-color: #F7941E;
+.appointment-form input:focus,
+.appointment-form select:focus {
+  outline: none;
+  border-color: #F7941E;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(247, 148, 30, 0.1);
+}
+
+/* Footer (Refined Columns) */
+.main-footer {
+  background-color: #333;
   color: white;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  padding: 80px 0 40px;
 }
 
-.appointment-form button:hover {
-  background-color: #F26522;
-}
-/* Animation Setup */
-.animate {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+  gap: 40px;
+  margin-bottom: 60px;
 }
 
-.animate.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.zenit-gray {
-  color: #737373;
-}
-
-.zenit-orange_white_border {
+.footer-col h4 {
   color: #F7941E;
-  /*-webkit-text-stroke: 0.8px rgb(7, 7, 7); /* white border */
-  /*text-stroke: 0.5px white;  fallback for future browsers */
-}
-.zenit-orange{
-    color: #F7941E;
-   /* -webkit-text-stroke: 0.3px rgb(7, 7, 7); */
-    font-weight: bold;
-
+  margin-bottom: 25px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-/* ============================= */
-/* 📱 Responsive Design: Mobile */
-/* ============================= */
-@media (max-width: 768px) {
-
-  .nav-container {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  nav ul {
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-  }
-
-  nav li {
-    width: 100%;
-  }
-
-  nav a {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #737373;
-    color: white;
-    border-bottom: 1px solid #F7941E;
-  }
-
-  .hero h1 {
-    font-size: 2em;
-  }
-
-  .hero p {
-    font-size: 1em;
-  }
-
-  .btn {
-    width: 100%;
-    text-align: center;
-    padding: 14px;
-    font-size: 1em;
-  }
-
-  .service-grid {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .service-card {
-    flex: 1 1 100%;
-  }
-
-  .appointment-form form {
-    width: 100%;
-  }
-
-  .appointment-form button {
-    width: 100%;
-  }
-
-  .logo {
-    height: 40px;
-  }
-
-  footer {
-    font-size: 0.85em;
-    padding: 30px 10px;
-  }
-}
-/* ============================= */
-/* 📱 Responsive Design: Mobile */
-/* ============================= */
-@media (max-width: 768px) {
-
-  .nav-container {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  nav ul {
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-  }
-
-  nav li {
-    width: 100%;
-  }
-
-  nav a {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #737373;
-    color: white;
-    border-bottom: 1px solid #F7941E;
-  }
-
-  .hero h1 {
-    font-size: 2em;
-  }
-
-  .hero p {
-    font-size: 1em;
-  }
-
-  .btn {
-    width: 100%;
-    text-align: center;
-    padding: 14px;
-    font-size: 1em;
-  }
-
-  .service-grid {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .service-card {
-    flex: 1 1 100%;
-  }
-
-  .appointment-form form {
-    width: 100%;
-  }
-
-  .appointment-form button {
-    width: 100%;
-  }
-
-  .logo {
-    height: 40px;
-  }
-
-  footer {
-    font-size: 0.85em;
-    padding: 30px 10px;
-  }
+.footer-col p, .footer-col li {
+  color: #ccc;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  list-style: none;
 }
 
-.menu-toggle {
-  display: none;
-  font-size: 1.8em;
-  background: none;
-  color: white;
-  border: none;
-  cursor: pointer;
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-@media (max-width: 768px) {
-  .menu-toggle {
-      align-self: center;
-    display: block;
-    margin-top: 10px;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background-color: #737373;
-  }
-
-  .nav-links.show {
-    display: flex;
-  }
+.footer-links a:hover {
+  color: #F7941E;
 }
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #888;
+  font-size: 0.85rem;
+}
+
+/* WhatsApp Button */
 .whatsapp-button {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 30px;
+  right: 30px;
   z-index: 999;
-  width: 60px;
-  height: 60px;
+  width: 65px;
+  height: 65px;
+  background-color: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+  transition: all 0.3s ease;
+}
+
+.whatsapp-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
 }
 
 .whatsapp-button img {
-  width: 100%;
-  height: auto;
-}
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+  width: 35px;
+  height: 35px;
 }
 
+/* Scroll Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
 
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
 
+/* Mobile Responsive */
+@media (max-width: 992px) {
+  .about .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .about-content {
+    text-align: center;
+  }
+  
+  .about h2::after {
+    margin: 10px auto 0;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-card {
+    padding: 30px 20px;
+  }
+}
