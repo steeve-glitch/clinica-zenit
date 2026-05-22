@@ -377,6 +377,59 @@ nav a.active {
   transform: translateY(0);
 }
 
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 10px 0;
+  }
+
+  .nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #737373;
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .btn-nav {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #F7941E;
+    padding: 12px;
+    border-radius: 8px;
+  }
+}
+
 /* Mobile Responsive */
 @media (max-width: 992px) {
   .about .container {
