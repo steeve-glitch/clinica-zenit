@@ -389,6 +389,7 @@ nav a.active {
 .whatsapp-button img {
   width: 35px;
   height: 35px;
+  filter: brightness(0) invert(1); /* Makes the icon pure white */
 }
 
 @keyframes pulse-whatsapp {
