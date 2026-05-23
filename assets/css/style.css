@@ -508,22 +508,16 @@ nav a.active {
     padding: 30px 20px;
   }
 }
-emplate-columns: 1fr;
-  }
-  
-  .form-card {
-    padding: 30px 20px;
-  }
+/* Cycling word cursor */
+.cursor {
+  display: inline-block;
+  color: #F7941E;
+  font-weight: 300;
+  margin-left: 2px;
+  animation: blink 0.7s step-end infinite;
 }
- 
-  .form-card {
-    padding: 30px 20px;
-  }
-}
-emplate-columns: 1fr;
-  }
-  
-  .form-card {
-    padding: 30px 20px;
-  }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }

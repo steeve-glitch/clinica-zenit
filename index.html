@@ -31,7 +31,7 @@
   <section class="hero">
     <div class="overlay">
       <div class="hero-content reveal">
-        <h1>Tu sonrisa, nuestra prioridad</h1>
+        <h1>Tu sonrisa, nuestra <span id="cycling-word"></span><span class="cursor">|</span></h1>
         <p>Atención dental de excelencia en el corazón de Concepción</p>
         <a href="appointment.html" class="btn">Reserva tu evaluación</a>
       </div>
@@ -139,6 +139,40 @@
     toggleBtn.addEventListener('click', () => {
       navLinksMenu.classList.toggle('show');
     });
+
+    // Cycling headline typewriter
+    (function () {
+      const words = ['prioridad', 'motivación', 'futuro'];
+      const el = document.getElementById('cycling-word');
+      let wordIndex = 0;
+      let charIndex = 0;
+      let deleting = false;
+
+      function tick() {
+        const word = words[wordIndex];
+
+        if (!deleting) {
+          el.textContent = word.slice(0, ++charIndex);
+          if (charIndex === word.length) {
+            deleting = true;
+            setTimeout(tick, 2000); // pause at full word
+            return;
+          }
+          setTimeout(tick, 90);
+        } else {
+          el.textContent = word.slice(0, --charIndex);
+          if (charIndex === 0) {
+            deleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            setTimeout(tick, 400);
+            return;
+          }
+          setTimeout(tick, 50);
+        }
+      }
+
+      setTimeout(tick, 600); // small initial delay
+    })();
 
     // Active Link Highlighting
     const sections = document.querySelectorAll("section, footer");
