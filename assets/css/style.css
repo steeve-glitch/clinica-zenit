@@ -128,18 +128,25 @@ nav a.active {
   color: white;
   padding: 15px 35px;
   text-decoration: none;
-  border-radius: 50px; /* Pill shape */
+  border-radius: 50px;
   font-weight: bold;
   font-size: 1rem;
   transition: all 0.3s ease;
   display: inline-block;
   box-shadow: 0 4px 15px rgba(247, 148, 30, 0.3);
+  animation: btn-glow 3s ease-in-out infinite;
 }
 
 .btn:hover {
   background-color: #F26522;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(247, 148, 30, 0.4);
+  box-shadow: 0 6px 25px rgba(247, 148, 30, 0.55);
+  animation: none;
+}
+
+@keyframes btn-glow {
+  0%, 100% { box-shadow: 0 4px 15px rgba(247, 148, 30, 0.25); }
+  50%       { box-shadow: 0 4px 28px rgba(247, 148, 30, 0.55), 0 0 0 6px rgba(247, 148, 30, 0.08); }
 }
 
 /* About Section (Two-Column) */
