@@ -102,10 +102,18 @@ nav a.active {
 }
 
 .hero h1 {
-  font-size: 4rem;
+  font-size: 2.8rem;
   margin-bottom: 20px;
-  line-height: 1.1;
+  line-height: 1.2;
   text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 1.8rem;
+    white-space: normal;
+  }
 }
 
 .hero p {
@@ -492,9 +500,6 @@ nav a.active {
 }
 
 @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2.5rem;
-  }
   
   .nav-links {
     display: none;
